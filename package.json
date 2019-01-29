@@ -4,7 +4,8 @@
   "description": "backstage",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "supervisor": "supervisor app.js"
   },
   "author": "Lee",
   "license": "ISC",
