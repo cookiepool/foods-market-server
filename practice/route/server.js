@@ -1,9 +1,25 @@
 const http = require("http");
+const fs = require("fs");
+const url = require("url");
+const querystring = require("querystring");
 
 function startServer(route, handle){
-  var onRequest = function(request, response){
+  /***测试路由部分***/
+  /*var onRequest = function(request, response){
     console.log("request received " + request.url);
     route(handle, request.url, response);
+  }
+
+  var server = http.createServer(onRequest);
+  server.listen(5000);
+  console.log("running");*/
+
+  /****测试****/
+  var onRequest = function(req, res){
+    console.log("start");
+    var urlObj = url.parse(req.url, true);
+    res.write(JSON.stringify(urlObj));
+    res.end();
   }
 
   var server = http.createServer(onRequest);
