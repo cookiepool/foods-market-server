@@ -19,6 +19,12 @@ function startServer(route, handle){
     console.log("start");
     var urlObj = url.parse(req.url, true);
     res.write(JSON.stringify(urlObj));
+
+    console.log(req.params); //undefined
+    console.log(req.query); //undefined
+    console.log(req.url.query); //undefined
+    console.log(req.url);
+
     res.end();
   }
 
