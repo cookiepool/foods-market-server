@@ -1,5 +1,5 @@
 # 卖菜商城后台
-## 可能用到的中间件、框架和工具
+## 可能用到的中间件、框架、工具和库
 >- express &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 第三方的HTTP框架。
 >- Postman &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于HTTP请求的测试工具。
 >- ejs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模板引擎，用于页面渲染。
@@ -9,3 +9,5 @@
 >- cookie-parser &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于cookie的解析。
 >- morgan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于日志记录。
 >- compression &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GZIP压缩，用于文本压缩，加快传输速度。
+>- mlab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 国外的免费数据库服务，有500M，但需要科学上网才能访问。
+>- mongoose &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于连接、操作mongodb的库。
