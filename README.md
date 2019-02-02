@@ -11,3 +11,4 @@
 >- compression &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GZIP压缩，用于文本压缩，加快传输速度。
 >- mlab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 国外的免费数据库服务，有500M，但需要科学上网才能访问。
 >- mongoose &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于连接、操作mongodb的库。
+>- mongolass &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于连接、操作mongodb的库。
