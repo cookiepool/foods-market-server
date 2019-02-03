@@ -12,3 +12,5 @@
 >- mlab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 国外的免费数据库服务，有500M，但需要科学上网才能访问。
 >- mongoose &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于连接、操作mongodb的库。
 >- mongolass &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于连接、操作mongodb的库。
+>- multer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于文件上传的库。
+>- express-fileupload &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于文件上传的中间件。
