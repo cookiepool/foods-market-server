@@ -14,3 +14,4 @@
 >- mongolass &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于连接、操作mongodb的库。
 >- multer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于文件上传的库。
 >- express-fileupload &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于文件上传的中间件。
+>- mongodb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mongodb官方的提供给node.js的驱动工具。
