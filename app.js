@@ -1,5 +1,7 @@
 const express = require("express");
-const mongoose = require("mongoose");
+
+var mongodbClient = require("mongodb").MongoClient;
+var urlMongo = "mongodb://localhost:27017";
 
 var app = express();
 
@@ -8,9 +10,22 @@ app.listen(3000, ()=>{
 });
 
 app.get("/index", (req, res)=>{
-  res.send("hello");
-  mongoose.connect("mongodb://localhost/footmarket");
+  mongodbClient.connect(urlMongo, {useNewUrlParser: true}, function(err, db){
+    if(err){
+      throw err;
+    }
+    var dbo = db.db("foodmarket");
+    dbo.collection("index_info").find({}).toArray(function(err, result) { // 返回集合中所有数据
+        if (err) throw err;
+        console.log(result);
+        res.json(result);
+        db.close();
+    });
+  })
 });
 
 console.log(__dirname);
 console.log(__filename);
+
+//`${ctxStatic}/flow/img/${item.imgSrc}`
+// ctxStatic + "/flow/img/" + item.imgSrc
