@@ -1,4 +1,5 @@
 const express = require("express");
+const dbConfig = require("./database/mongodbnative");
 
 var mongodbClient = require("mongodb").MongoClient;
 var urlMongo = "mongodb://localhost:27017";
@@ -10,12 +11,24 @@ app.listen(3000, ()=>{
 });
 
 app.get("/index", (req, res)=>{
-  mongodbClient.connect(urlMongo, {useNewUrlParser: true}, function(err, db){
+  // mongodbClient.connect(urlMongo, {useNewUrlParser: true}, function(err, db){
+  //   if(err){
+  //     throw err;
+  //   }
+  //   var dbo = db.db("foodmarket");
+  //   dbo.collection("index_info").find({}).toArray(function(err, result) { // 返回集合中所有数据
+  //       if (err) throw err;
+  //       console.log(result);
+  //       res.json(result);
+  //       db.close();
+  //   });
+  // })
+  dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, function(err, db){
     if(err){
       throw err;
     }
-    var dbo = db.db("foodmarket");
-    dbo.collection("index_info").find({}).toArray(function(err, result) { // 返回集合中所有数据
+    var dbo = db.db(dbConfig.dbName);
+    dbo.collection("fm_home").find({}).toArray(function(err, result) { // 返回集合中所有数据
         if (err) throw err;
         console.log(result);
         res.json(result);
