@@ -4,7 +4,7 @@ var mongodbClient = require("mongodb").MongoClient;
 //连接地址
 var url = "mongodb://127.0.0.1:27017";
 //数据库名
-var dbName = "foodmarket";
+var dbName = "food_market";
 //封装一个函数并导出
 var operateDatabase = function(arg){
   //保存结果
@@ -24,4 +24,4 @@ var operateDatabase = function(arg){
   return finalResult;
 }
 
-module.exports = operateDatabase;
+module.exports = {mongodbClient, url, dbName};
