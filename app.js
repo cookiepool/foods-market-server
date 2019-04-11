@@ -32,8 +32,7 @@ app.use(morgan("dev"));
 var compression = require("compression");
 app.use(compression());
 
-
-app.use('user', require('./route/user.js'));
+app.use('/user', require('./route/user.js'));
 app.get("/index", (req, res)=>{
   // mongodbClient.connect(urlMongo, {useNewUrlParser: true}, function(err, db){
   //   if(err){
