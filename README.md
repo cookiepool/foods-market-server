@@ -16,3 +16,4 @@
 >- express-fileupload &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于文件上传的中间件。
 >- mongodb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mongodb官方的提供给node.js的驱动工具。
 >- pm2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于服务器的项目管理和启动。
+>- express-session &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 处理客户端session，主要是登陆验证的问题。
