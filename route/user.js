@@ -11,7 +11,25 @@ var userRouter = express.Router();
   {status: true, msg: '请求成功', data: {status: false, msg: '登录失败，请检查手机和密码'}}
 */
 userRouter.get('/login', (req, res)=>{
-  res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录成功'}})
+  dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, (err, db)=>{
+    if(err) throw err;
+    var dbonline = db.db(dbConfig.dbName);
+    //查询参数
+    var params = {
+      user_tel: '18381317534',
+      user_pwd: '123456'
+    };
+    dbonline.collection('fm_user').find(params).toArray((err, result)=>{
+      if(err) throw err;
+      console.log(result);
+      if(result.length != 0){
+        res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录成功'}})
+      }else{
+        res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录失败，请检查用户名或密码'}})
+      }
+      db.close();
+    });
+  })
 });
 
 /****用户注册****/
