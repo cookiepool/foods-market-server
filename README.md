@@ -17,3 +17,4 @@
 >- mongodb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mongodb官方的提供给node.js的驱动工具。
 >- pm2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 用于服务器的项目管理和启动。
 >- express-session &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 处理客户端session，主要是登陆验证的问题。
+>- JWT(JSON Web Tokens) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 使用tokens来实现登录验证。
