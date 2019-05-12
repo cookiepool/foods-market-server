@@ -21,7 +21,6 @@ userRouter.get('/login', (req, res)=>{
     };
     dbonline.collection('fm_user').find(params).toArray((err, result)=>{
       if(err) throw err;
-      console.log(result);
       if(result.length != 0){
         //登陆成功写入session
         req.session.user = params.user_tel;
@@ -46,6 +45,8 @@ userRouter.get('/logout', (req, res)=>{
   req.session.destroy(()=>{
     res.clearCookie("user", {});
     res.cookie("isLogin", "false");
+
+    res.send("退出成功");
   })
 })
 /****验证用户是否处于登录状态****/
@@ -53,14 +54,34 @@ userRouter.get('/logout', (req, res)=>{
   请求参数：无
   返回结果（例）：无
 */
-userRouter.get('/isLogin', (res, req)=>{
+userRouter.get('/islogin', (req, res)=>{
   var nowUser = {user: "default"};
-  var nowCookie = req.header.cookie || '';
-  nowCookie = nowCookie.split(";");
+
+  //以下注释的两句话暂时没发现用处
+  // var nowCookie = req.header.cookie || '';
+  // nowCookie = nowCookie.split(";");
   var cookieUser = "default";
   var sessionUser = "default";
-  
+
+  //解析cookie里的信息
+  console.log(req.header);
+  console.log(req.cookies);
+  console.log(req.session);
+  res.send("Ok");
 })
+
+// 全局验证类，当前端调用接口时会先调用此方法验证session中是否存在user,
+// 如果不存在user则抛出异常，如果存在则执行下一个方法；
+// app.use(function (req, res, next) {
+//   if (!req.session.user) {
+//       return next(new Error('oh no')) // handle error
+//   } else {
+//       var user = req.session.user;
+//       var name = user.name;
+//       console.log('你好' + name + '，欢迎来到我的家园。');
+//   }
+//   next() // otherwise continue
+// });
 
 /****用户注册****/
 /*
