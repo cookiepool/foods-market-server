@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const dbConfig = require("../database/mongodbnative");
 
 var userRouter = express.Router();
@@ -23,6 +23,10 @@ userRouter.get('/login', (req, res)=>{
       if(err) throw err;
       console.log(result);
       if(result.length != 0){
+        //登陆成功写入session
+        req.session.user = params.user_tel;
+        req.session.isLogin = true;
+        //返回数据
         res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录成功'}})
       }else{
         res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录失败，请检查用户名或密码'}})
@@ -31,6 +35,32 @@ userRouter.get('/login', (req, res)=>{
     });
   })
 });
+
+/****用户退出登录****/
+/*
+  请求参数：无
+  返回结果（例）：无
+*/
+userRouter.get('/logout', (req, res)=>{
+  //清除session,cookie
+  req.session.destroy(()=>{
+    res.clearCookie("user", {});
+    res.cookie("isLogin", "false");
+  })
+})
+/****验证用户是否处于登录状态****/
+/*
+  请求参数：无
+  返回结果（例）：无
+*/
+userRouter.get('/isLogin', (res, req)=>{
+  var nowUser = {user: "default"};
+  var nowCookie = req.header.cookie || '';
+  nowCookie = nowCookie.split(";");
+  var cookieUser = "default";
+  var sessionUser = "default";
+  
+})
 
 /****用户注册****/
 /*
