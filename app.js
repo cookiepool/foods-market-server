@@ -8,6 +8,15 @@ app.listen(3000, ()=>{
 });
 
 //配置中间件
+//用于登陆验证（cookie-session）
+var session = require("express-session");
+app.use(session({
+  secret: "fm user",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {user: 'default', maxAge: 7*24*60*60*1000}
+}));
+
 //跨域中间件
 var cors = require("cors");
 app.use(cors({
@@ -33,7 +42,7 @@ var compression = require("compression");
 app.use(compression());
 
 app.use('/user', require('./route/user.js'));
-app.get("/index", (req, res)=>{
+app.get('/index', (req, res)=>{
   // mongodbClient.connect(urlMongo, {useNewUrlParser: true}, function(err, db){
   //   if(err){
   //     throw err;
