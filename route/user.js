@@ -1,5 +1,7 @@
 const express = require("express");
-const dbConfig = require("../database/mongodbnative");
+// const dbConfig = require("../database/mongodbnative");
+
+const pool = require('../database/sqlpool');
 
 var userRouter = express.Router();
 
@@ -11,7 +13,25 @@ var userRouter = express.Router();
   {status: true, msg: '请求成功', data: {status: false, msg: '登录失败，请检查手机和密码'}}
 */
 userRouter.get('/login', (req, res)=>{
-  dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, (err, db)=>{
+  var sql = "SELECT tel_number,uname,avatar FROM fm_user WHERE tel_number=? AND upwd=md5(?)";
+  var params = {
+    tel: '18381317534',
+    upwd: '123456'
+  }
+  pool.query(sql, [params.tel, params.upwd], (error, result) => {
+    console.log(error);
+    if(result.length != 0){
+      //登陆成功写入session
+      req.session.user = params.tel;
+      req.session.isLogin = true;
+      //返回数据
+      res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录成功'}})
+    }else{
+      res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录失败，请检查用户名或密码'}})
+    }
+  })
+  /** 以下为mongodb的语法（已废弃） **/
+  /* dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, (err, db)=>{
     if(err) throw err;
     var dbonline = db.db(dbConfig.dbName);
     //查询参数
@@ -31,8 +51,8 @@ userRouter.get('/login', (req, res)=>{
         res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录失败，请检查用户名或密码'}})
       }
       db.close();
-    });
-  })
+    }); 
+  }) */
 });
 
 /****用户退出登录****/
@@ -64,9 +84,10 @@ userRouter.get('/islogin', (req, res)=>{
   var sessionUser = "default";
 
   //解析cookie里的信息
-  console.log(req.header);
-  console.log(req.cookies);
-  console.log(req.session);
+  // console.log(req.header);
+  // console.log(req.cookies);
+  console.log(req.session.isLogin);
+  console.log(req.session.user);
   res.send("Ok");
 })
 

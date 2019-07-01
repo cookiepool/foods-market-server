@@ -43,18 +43,6 @@ app.use(compression());
 
 app.use('/user', require('./route/user.js'));
 app.get('/index', (req, res)=>{
-  // mongodbClient.connect(urlMongo, {useNewUrlParser: true}, function(err, db){
-  //   if(err){
-  //     throw err;
-  //   }
-  //   var dbo = db.db("foodmarket");
-  //   dbo.collection("index_info").find({}).toArray(function(err, result) { // 返回集合中所有数据
-  //       if (err) throw err;
-  //       console.log(result);
-  //       res.json(result);
-  //       db.close();
-  //   });
-  // })
   dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, function(err, db){
     if(err){
       throw err;
