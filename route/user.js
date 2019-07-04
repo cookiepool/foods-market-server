@@ -5,9 +5,28 @@ const pool = require('../database/sqlpool');
 
 var userRouter = express.Router();
 
+/****1、验证用户的手机是否已注册****/
+/*
+  请求参数：用户电话-telNumber
+  返回结果（例）：
+  {status: true, msg: '请求成功', data: {status: true, msg: '手机号码可用'}}
+  {status: true, msg: '请求成功', data: {status: fasle, msg: '手机号码已经被注册'}}
+*/
+userRouter.post('/isRegister', (req, res) => {
+  var sql = "SELECT tel_number FROM fm_user WHERE tel_number=?";
+  var _telNumber = req.body.telNumber;
+  pool.query(sql, [_telNumber], (error, result) => {
+    console,log(error);
+    if(result.length > 0){
+      res.json({status: true, msg: '请求成功', data: {status: true, msg: '手机号码可用'}});
+    }else{
+      res.json({status: true, msg: '请求成功', data: {status: false, msg: '手机号码已经被注册'}});
+    }
+  })
+})
 /****用户登录验证****/
 /*
-  请求参数：用户电话-utelNum, 密码-upwd
+  请求参数：用户电话-telNumber, 密码-upwd
   返回结果（例）：
   {status: true, msg: '请求成功', data: {status: true, msg: '登录成功'}}
   {status: true, msg: '请求成功', data: {status: false, msg: '登录失败，请检查手机和密码'}}
@@ -20,6 +39,9 @@ userRouter.get('/login', (req, res)=>{
   }
   pool.query(sql, [params.tel, params.upwd], (error, result) => {
     console.log(error);
+    console.log(result)
+    res.json(result);
+    return;
     if(result.length != 0){
       //登陆成功写入session
       req.session.user = params.tel;
@@ -106,13 +128,40 @@ userRouter.get('/islogin', (req, res)=>{
 
 /****用户注册****/
 /*
-  请求参数：用户电话-utelNum, 密码-upwd
+  请求参数：用户电话-telNumber, 密码-upwd
   返回结果（例）：
   ｛status: true, msg: '请求成功', data: {status: true, msg: '注册成功'}｝
   ｛status: true, msg: '请求成功', data: {status: false, msg: '注册失败，请检查'}｝
 */
 userRouter.post('/register', (req, res)=>{
-
+  var defaultName = '小菜用户' + new Date().getTime();
+  var sql = "INSERT INTO fm_user VALUES(null,?,?,md5(?),'http://static.img.com/jl/sdad.png')";
+  var _telNumber = req.body.telNumber;
+  var _upwd = req.body.upwd;
+  pool.query(sql, [_telNumber, defaultName, _upwd], (error, result) => {
+    console.log(error);
+    console.log(result)
+    if(result.affectedRows > 0){
+      res.json({
+        status: true,
+        msg: '请求成功',
+        data: {
+          status: true,
+          uid: result.insertId,
+          msg: '注册成功！'
+        }
+      })
+    }else{
+      res.json({
+        status: true,
+        msg: '请求成功',
+        data: {
+          status: false,
+          msg: '注册失败，请稍后再试！'
+        }
+      })
+    }
+  })
 })
 
 module.exports = userRouter;

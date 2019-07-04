@@ -20,7 +20,7 @@ app.use(session({
 //跨域中间件
 var cors = require("cors");
 app.use(cors({
-    origin: ["http://localhost:4200", "http://localhost:8080", "http://localhost:5000", "http://localhost:7600", "http://elmarket.top"],
+    origin: ["http://localhost:4200", "http://localhost:8686", "http://localhost:5000", "http://localhost:7600", "http://elmarket.top"],
     credentials: true
 }));
 
