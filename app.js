@@ -11,7 +11,7 @@ app.listen(3000, ()=>{
 //用于登陆验证（cookie-session）
 var session = require("express-session");
 app.use(session({
-  secret: "fm user",
+  secret: "fm_user",
   resave: false,
   saveUninitialized: true,
   cookie: {user: 'default', maxAge: 7*24*60*60*1000}
@@ -20,8 +20,8 @@ app.use(session({
 //跨域中间件
 var cors = require("cors");
 app.use(cors({
-    origin: ["http://localhost:4200", "http://localhost:8686", "http://localhost:5000", "http://localhost:7600", "http://elmarket.top"],
-    credentials: true
+  origin: ["http://localhost:8686", "http://192.168.12.101:8686"],
+  credentials: true
 }));
 
 //POST请求里面用来解析请求信息的参数。
@@ -49,10 +49,10 @@ app.get('/index', (req, res)=>{
     }
     var dbo = db.db(dbConfig.dbName);
     dbo.collection("fm_home").find({}).toArray(function(err, result) { // 返回集合中所有数据
-        if (err) throw err;
-        console.log(result);
-        res.json(result);
-        db.close();
+      if (err) throw err;
+      console.log(result);
+      res.json(result);
+      db.close();
     });
   })
 });
