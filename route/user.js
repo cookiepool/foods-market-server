@@ -1,6 +1,4 @@
 const express = require("express");
-// const dbConfig = require("../database/mongodbnative");
-
 const pool = require('../database/sqlpool');
 
 var userRouter = express.Router();

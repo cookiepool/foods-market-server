@@ -2,7 +2,6 @@ const express = require("express");
 const dbConfig = require("./database/mongodbnative");
 
 var app = express();
-
 app.listen(3000, ()=>{
   console.log("the server is running!");
 });
@@ -41,7 +40,13 @@ app.use(morgan("dev"));
 var compression = require("compression");
 app.use(compression());
 
+//用户相关的路由
 app.use('/user', require('./route/user.js'));
+//主页相关的路由
+app.use('/index', require('./route/index.js'));
+
+//mongodb相关的（已废弃）
+/**********
 app.get('/index', (req, res)=>{
   dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, function(err, db){
     if(err){
@@ -55,7 +60,7 @@ app.get('/index', (req, res)=>{
       db.close();
     });
   })
-});
+}); ***********/
 
 console.log(__dirname);
 console.log(__filename);
