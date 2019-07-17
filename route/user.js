@@ -1,7 +1,7 @@
 const express = require("express");
 const pool = require('../database/sqlpool');
 
-var userRouter = express.Router();
+let userRouter = express.Router();
 
 /****1、验证用户的手机是否已注册****/
 /*
@@ -11,8 +11,8 @@ var userRouter = express.Router();
   {status: true, msg: '请求成功', data: {status: fasle, msg: '手机号码已经被注册'}}
 */
 userRouter.post('/isRegister', (req, res) => {
-  var sql = "SELECT tel_number FROM fm_user WHERE tel_number=?";
-  var _telNumber = req.body.telNumber;
+  let sql = "SELECT tel_number FROM fm_user WHERE tel_number=?";
+  let _telNumber = req.body.telNumber;
   pool.query(sql, [_telNumber], (error, result) => {
     console.log(error);
     if(result.length == 0){
@@ -30,9 +30,9 @@ userRouter.post('/isRegister', (req, res) => {
   {status: true, msg: '请求成功', data: {status: false, msg: '登录失败，请检查手机和密码'}}
 */
 userRouter.post('/login', (req, res)=>{
-  var sql = "SELECT uid,tel_number,uname,avatar FROM fm_user WHERE tel_number=? AND upwd=md5(?)";
-  var _telNumber = req.body.telNumber;
-  var _upwd = req.body.upwd;
+  let sql = "SELECT uid,tel_number,uname,avatar FROM fm_user WHERE tel_number=? AND upwd=md5(?)";
+  let _telNumber = req.body.telNumber;
+  let _upwd = req.body.upwd;
   pool.query(sql, [_telNumber, _upwd], (error, result) => {
     console.log(error);
     console.log(result);
@@ -50,9 +50,9 @@ userRouter.post('/login', (req, res)=>{
   /** 以下为mongodb的语法（已废弃） **/
   /* dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, (err, db)=>{
     if(err) throw err;
-    var dbonline = db.db(dbConfig.dbName);
+    let dbonline = db.db(dbConfig.dbName);
     //查询参数
-    var params = {
+    let params = {
       user_tel: '18381317534',
       user_pwd: '123456'
     };
@@ -105,8 +105,8 @@ userRouter.get('/islogin', (req, res)=>{
 //   if (!req.session.user) {
 //       return next(new Error('oh no')) // handle error
 //   } else {
-//       var user = req.session.user;
-//       var name = user.name;
+//       let user = req.session.user;
+//       let name = user.name;
 //       console.log('你好' + name + '，欢迎来到我的家园。');
 //   }
 //   next() // otherwise continue
@@ -120,10 +120,10 @@ userRouter.get('/islogin', (req, res)=>{
   ｛status: true, msg: '请求成功', data: {status: false, msg: '注册失败，请检查'}｝
 */
 userRouter.post('/register', (req, res)=>{
-  var defaultName = '小菜用户' + new Date().getTime();
-  var sql = "INSERT INTO fm_user VALUES(null,?,?,md5(?),'http://static.img.com/jl/sdad.png')";
-  var _telNumber = req.body.telNumber;
-  var _upwd = req.body.upwd;
+  let defaultName = '小菜用户' + new Date().getTime();
+  let sql = "INSERT INTO fm_user VALUES(null,?,?,md5(?),'http://static.img.com/jl/sdad.png')";
+  let _telNumber = req.body.telNumber;
+  let _upwd = req.body.upwd;
   pool.query(sql, [_telNumber, defaultName, _upwd], (error, result) => {
     console.log(error);
     console.log(result)

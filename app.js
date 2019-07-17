@@ -3,7 +3,7 @@ const dbConfig = require("./database/mongodbnative");
 
 var app = express();
 app.listen(3000, ()=>{
-  console.log("the server is running!");
+  console.log("the server is running!, port is 3000");
 });
 
 //配置中间件
