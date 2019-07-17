@@ -16,6 +16,16 @@ CREATE TABLE fm_index_recom(
 	irid INT PRIMARY KEY AUTO_INCREMENT,
 	product_id INT
 );
+#1.3新建首页新品上市表
+CREATE TABLE fm_index_new(
+	inid INT PRIMARY KEY AUTO_INCREMENT,
+	product_id INT
+);
+#1.4新建首页热销商品
+CREATE TABLE fm_index_hot(
+	ihid INT PRIMARY KEY AUTO_INCREMENT,
+	peoduct_id INT
+);
 
 #2.用户相关的表的建立
 #2.1新建用户表
