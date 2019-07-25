@@ -135,6 +135,34 @@ INSERT INTO fm_products VALUES(
 INSERT INTO fm_products VALUES(
 	15, '鹅肠/500g（称重）', '肉质饱满，虾肉肥美', 9.90, '只', 'http://static.jf.com/dada.png', 2, 4
 );
+# 粮油干调：3，子类：香料：1，调味品：2
+INSERT INTO fm_products VALUES(
+	16, '草果/30g', '', 6.90, '份', 'http://static.jf.com/dada.png', 3, 1
+);
+INSERT INTO fm_products VALUES(
+	17, '味精/100g', '选用优质谷物淀粉发酵而成，是一种自然谷物酿造食品', 4.90, '袋', 'http://static.jf.com/dada.png', 3, 2
+);
+# 蔬菜水果：4，子类：蔬菜：1，水果：2
+INSERT INTO fm_products VALUES(
+	18, '法香/50g', '新鲜的法香，气味浓郁清香', 3.50, '份', 'http://static.jf.com/dada.png', 4, 1
+);
+INSERT INTO fm_products VALUES(
+	19, '味精/100g', '选用优质谷物淀粉发酵而成，是一种自然谷物酿造食品', 4.90, '袋', 'http://static.jf.com/dada.png', 3, 2
+);
+# 鲜花野味：5，子类：鲜花：1，野味：2
+INSERT INTO fm_products VALUES(
+	18, '兰花/50g', '新鲜的兰花，美丽诱人', 19.50, '份', 'http://static.jf.com/dada.png', 5, 1
+);
+INSERT INTO fm_products VALUES(
+	19, '野鸭', '野味，营养又好吃，滋阴补肾', 1999.90, '只', 'http://static.jf.com/dada.png', 5, 2
+);
+# 珍品：6，子类：1
+INSERT INTO fm_products VALUES(
+	20, '茶钩翅', '绝对巴适的拌', 2999.50, '份', 'http://static.jf.com/dada.png', 6, 1
+);
+INSERT INTO fm_products VALUES(
+	21, '燕窝', '滋阴补肾，绝对大补', 9999.90, '500g', 'http://static.jf.com/dada.png', 6, 1
+);
 
 #3.2产品规格表插入数据
 INSERT INTO fm_products_spec VALUES(
