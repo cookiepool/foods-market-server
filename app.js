@@ -2,16 +2,15 @@ const express = require("express");
 const dbConfig = require("./database/mongodbnative");
 
 var app = express();
-
 app.listen(3000, ()=>{
-  console.log("the server is running!");
+  console.log("the server is running!, port is 3000");
 });
 
 //配置中间件
 //用于登陆验证（cookie-session）
 var session = require("express-session");
 app.use(session({
-  secret: "fm user",
+  secret: "fm_user",
   resave: false,
   saveUninitialized: true,
   cookie: {user: 'default', maxAge: 7*24*60*60*1000}
@@ -20,8 +19,8 @@ app.use(session({
 //跨域中间件
 var cors = require("cors");
 app.use(cors({
-    origin: ["http://localhost:4200", "http://localhost:8080", "http://localhost:5000", "http://localhost:7600", "http://elmarket.top"],
-    credentials: true
+  origin: ["http://localhost:8686", "http://192.168.12.101:8686"],
+  credentials: true
 }));
 
 //POST请求里面用来解析请求信息的参数。
@@ -41,33 +40,27 @@ app.use(morgan("dev"));
 var compression = require("compression");
 app.use(compression());
 
+//用户相关的路由
 app.use('/user', require('./route/user.js'));
+//主页相关的路由
+app.use('/index', require('./route/index.js'));
+
+//mongodb相关的（已废弃）
+/**********
 app.get('/index', (req, res)=>{
-  // mongodbClient.connect(urlMongo, {useNewUrlParser: true}, function(err, db){
-  //   if(err){
-  //     throw err;
-  //   }
-  //   var dbo = db.db("foodmarket");
-  //   dbo.collection("index_info").find({}).toArray(function(err, result) { // 返回集合中所有数据
-  //       if (err) throw err;
-  //       console.log(result);
-  //       res.json(result);
-  //       db.close();
-  //   });
-  // })
   dbConfig.mongodbClient.connect(dbConfig.url, {useNewUrlParser: true}, function(err, db){
     if(err){
       throw err;
     }
     var dbo = db.db(dbConfig.dbName);
     dbo.collection("fm_home").find({}).toArray(function(err, result) { // 返回集合中所有数据
-        if (err) throw err;
-        console.log(result);
-        res.json(result);
-        db.close();
+      if (err) throw err;
+      console.log(result);
+      res.json(result);
+      db.close();
     });
   })
-});
+}); ***********/
 
 console.log(__dirname);
 console.log(__filename);
