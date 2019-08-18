@@ -176,7 +176,6 @@ indexRouter.get('/hotproduct', (req, res) => {
   });
 
   Promise.all([promise_one, promise_two]).then((result) => {
-    console.log(result);
     for(let i = 0; i < result[0].length; i++) {
       let addItem = {};
       addItem.pid = result[0][i].pid;

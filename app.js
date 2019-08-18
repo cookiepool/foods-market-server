@@ -19,7 +19,7 @@ app.use(session({
 //跨域中间件
 var cors = require("cors");
 app.use(cors({
-  origin: ["http://localhost:8686", "http://192.168.12.101:8686"],
+  origin: ["http://localhost:8686", "http://192.168.1.108:8686"],
   credentials: true
 }));
 
