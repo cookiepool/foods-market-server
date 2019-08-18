@@ -24,7 +24,7 @@ CREATE TABLE fm_index_new(
 #1.4新建首页热销商品
 CREATE TABLE fm_index_hot(
 	ihid INT PRIMARY KEY AUTO_INCREMENT,
-	peoduct_id INT
+	product_id INT
 );
 
 #2.用户相关的表的建立
@@ -78,6 +78,41 @@ INSERT INTO fm_index_carousel VALUES(
 #1.2首页推荐商品的数据插入
 INSERT INTO fm_index_recom VALUES(
 	null, 1
+);
+INSERT INTO fm_index_recom VALUES(
+	null, 2
+);
+INSERT INTO fm_index_recom VALUES(
+	null, 3
+);
+INSERT INTO fm_index_recom VALUES(
+	null, 4
+);
+INSERT INTO fm_index_recom VALUES(
+	null, 5
+);
+INSERT INTO fm_index_recom VALUES(
+	null, 6
+);
+#1.3首页新品上市的数据插入
+INSERT INTO fm_index_new VALUES(
+	null, 7
+);
+INSERT INTO fm_index_new VALUES(
+	null, 8
+);
+INSERT INTO fm_index_new VALUES(
+	null, 9
+);
+#1.3首页新品上市的数据插入
+INSERT INTO fm_index_hot VALUES(
+	null, 10
+);
+INSERT INTO fm_index_hot VALUES(
+	null, 11
+);
+INSERT INTO fm_index_hot VALUES(
+	null, 12
 );
 
 #2.用户相关的数据插入
@@ -137,7 +172,7 @@ INSERT INTO fm_products VALUES(
 );
 # 粮油干调：3，子类：香料：1，调味品：2
 INSERT INTO fm_products VALUES(
-	16, '草果/30g', '', 6.90, '份', 'http://referenceerror.top/imgs/products_detail/detail_16.jpg', 3, 1
+	16, '草果/30g', '美味可口，新鲜好吃', 6.90, '份', 'http://referenceerror.top/imgs/products_detail/detail_16.jpg', 3, 1
 );
 INSERT INTO fm_products VALUES(
 	17, '味精/100g', '选用优质谷物淀粉发酵而成，是一种自然谷物酿造食品', 4.90, '袋', 'http://referenceerror.top/imgs/products_detail/detail_17.jpg', 3, 2
