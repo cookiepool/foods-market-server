@@ -44,6 +44,8 @@ app.use(compression());
 app.use('/user', require('./route/user.js'));
 //主页相关的路由
 app.use('/index', require('./route/index.js'));
+// 产品相关路由
+app.use('/product', require('./route/product.js'));
 
 //mongodb相关的（已废弃）
 /**********
