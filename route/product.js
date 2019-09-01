@@ -45,4 +45,24 @@ productRouter.get('/productdetail', (req, res) => {
   });
 });
 
+/* 获取分类页数据 */
+/* 
+  请求参数：一级菜单编号-typeID，二级菜单编号-itemID
+  返回结果（例）：
+  {status: true, msg: '请求成功', data: itemData}
+*/
+productRouter.get('/typelist', (req, res) => {
+  let _typeID = req.query.firstID;
+  let _itemID = req.query.secondID;
+  let sql = 'SELECT * FROM fm_products WHERE type=? AND item_type=?';
+
+  pool.query(sql, [_typeID, _itemID], (error, result) => {
+    console.log(error)
+    if(error) {
+      res.json({status: false, msg: '请求失败', data: []});
+    }else {
+      res.json({status: true, msg: '请求成功', data: result});
+    }
+  });
+})
 module.exports = productRouter;
