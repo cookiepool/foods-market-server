@@ -64,6 +64,14 @@ CREATE TABLE fm_products_imgs(
 	img_link VARCHAR(256) DEFAULT ''
 );
 
+#4.购物车表建立
+CREATE TABLE fm_user_cart(
+	ucid INT PRIMARY KEY AUTO_INCREMENT,
+	user_id INT,
+	product_id INT,
+	cart_count INT
+);
+
 #二、插入数据
 #1.首页相关的数据插入
 #1.1首页轮播图表插入数据
@@ -191,7 +199,7 @@ INSERT INTO fm_products VALUES(
 );
 # 珍品：6，子类：补品：1
 INSERT INTO fm_products VALUES(
-	21, '茶钩翅', '绝对巴适的拌', 2999.50, '份', 'http://referenceerror.top/imgs/products_detail/detail_21.jpg', 6, 1, 'http://referenceerror.top/imgs/products/1_21.jpg'
+	21, '茶钩翅', '绝对巴适的板', 2999.50, '份', 'http://referenceerror.top/imgs/products_detail/detail_21.jpg', 6, 1, 'http://referenceerror.top/imgs/products/1_21.jpg'
 );
 INSERT INTO fm_products VALUES(
 	22, '燕窝', '滋阴补肾，绝对大补', 9999.90, '500g', 'http://referenceerror.top/imgs/products_detail/detail_22.jpg', 6, 1, 'http://referenceerror.top/imgs/products/1_22.jpg'
@@ -480,4 +488,9 @@ INSERT INTO fm_products_imgs VALUES(
 );
 INSERT INTO fm_products_imgs VALUES(
 	null, 22, 'http://referenceerror.top/imgs/products/4_22.jpg'
+);
+
+#4.购物车表插入数据
+INSERT INTO fm_user_cart VALUES(
+	null, 1, 1, 3
 );

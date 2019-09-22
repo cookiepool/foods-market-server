@@ -46,6 +46,8 @@ app.use('/user', require('./route/user.js'));
 app.use('/index', require('./route/index.js'));
 // 产品相关路由
 app.use('/product', require('./route/product.js'));
+// 购物车相关路由
+app.use('/cart', require('./route/cart.js'));
 
 //mongodb相关的（已废弃）
 /**********
