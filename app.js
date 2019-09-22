@@ -12,7 +12,7 @@ var session = require("express-session");
 app.use(session({
   secret: "fm_user",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {user: 'default', maxAge: 7*24*60*60*1000}
 }));
 

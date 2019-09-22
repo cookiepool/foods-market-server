@@ -41,6 +41,7 @@ userRouter.post('/login', (req, res)=>{
       req.session.userid = result[0].uid;
       req.session.phoneNum = result[0].tel_number;
       req.session.isLogin = true;
+      res.cookie('islogin', 'true');
       //返回数据
       res.json({status: true, msg: '请求成功', data: {status: true, msg: '登录成功'}})
     }else{
@@ -79,6 +80,7 @@ userRouter.post('/login', (req, res)=>{
 */
 userRouter.get('/logout', (req, res)=>{
   //清除session,cookie
+  res.clearCookie('islogin'); // 清除浏览器cookie
   req.session.destroy(()=>{
     res.json({statsu: true, msg: '请求成功', data: {status: true, msg: '退出成功'}});
   })
